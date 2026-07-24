@@ -9,8 +9,10 @@ jobs:
   hello_world_job:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: check out
-        run: actions/checkout@v4
+        run: | 
+          echo "$GITHUB_WORKSPACE"
       - name: Say hello
         run: |
           echo "Hello World!"
