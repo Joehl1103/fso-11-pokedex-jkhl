@@ -37,6 +37,7 @@ module.exports = [
   },
   {
     files: ['src/**/*.{js,jsx}'],
+    ignores: ['src/**/*.jest.spec.jsx'],
     plugins: {
       react,
     },
@@ -73,7 +74,7 @@ module.exports = [
     },
   },
   {
-    files: ['./jest.setup.js', 'test/**/*.{js,jsx}'],
+    files: ['./jest.setup.js', '*.jest.spec.jsx'],
     plugins: {
       jest,
     },
