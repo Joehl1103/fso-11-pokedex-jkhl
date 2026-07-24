@@ -61,6 +61,7 @@ module.exports = [
     },
     rules: {
       ...react.configs.recommended.rules,
+      ...react.configs.flat['jsx-runtime'].rules,
       indent: ['error', 2],
       'linebreak-style': ['error', 'unix'],
       quotes: ['error', 'single'],
@@ -74,8 +75,9 @@ module.exports = [
     },
   },
   {
-    files: ['./jest.setup.js', '*.jest.spec.jsx'],
+    files: ['./jest.setup.js', '**/*.jest.spec.jsx'],
     plugins: {
+      react,
       jest,
     },
     languageOptions: {
@@ -88,6 +90,15 @@ module.exports = [
         ...globals.node,
         ...globals.jest,
       },
+    },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
+    rules: {
+      ...react.configs.recommended.rules,
+      ...react.configs.flat['jsx-runtime'].rules,
     },
   },
 ]

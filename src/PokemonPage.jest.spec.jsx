@@ -2,6 +2,8 @@ import { act } from 'react'
 import { render, screen } from '@testing-library/react'
 import axiosMock from 'axios'
 import '@testing-library/jest-dom'
+import { MemoryRouter } from 'react-router-dom'
+import PokemonPage from './PokemonPage'
 
 jest.mock('axios')
 
