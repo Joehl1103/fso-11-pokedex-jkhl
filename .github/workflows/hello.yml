@@ -15,4 +15,6 @@ jobs:
       - name: print date
         run: date
       - name: contents of dir
-        run: ls -l
+        run: |
+          pwd
+          ls -l
