@@ -14,3 +14,5 @@ jobs:
           echo "Hello World!"
       - name: print date
         run: date
+      - name: contents of dir
+        run: ls -l
