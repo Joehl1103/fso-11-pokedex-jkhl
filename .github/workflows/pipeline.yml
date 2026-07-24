@@ -19,3 +19,5 @@ jobs:
         run: npm run eslint
       - name: Test
         run: npm run test
+      - name: Build
+        run: webpack --mode production
