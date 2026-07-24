@@ -1,2 +1,4 @@
 dist/
 node_modules/
+.nvim.lua
+.prettierrc.json
