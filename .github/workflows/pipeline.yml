@@ -22,7 +22,7 @@ jobs:
       - name: Test
         run: npm run test
       - name: Test e2e
-        run: npx playwright install --with-deps && npm run test:e2e
+        run: npx playwright install --with-deps chromium && npm run test:e2e
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
