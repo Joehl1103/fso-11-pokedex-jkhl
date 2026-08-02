@@ -11,4 +11,8 @@ const start = async () => {
   console.log(`server started on port ${PORT}`)
 }
 
+app.get('/version', (req, res) => {
+  res.send('1')
+})
+
 start()
