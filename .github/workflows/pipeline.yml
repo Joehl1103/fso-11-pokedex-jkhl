@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  simple_deployment_pipeline:
+  prep_for_deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -29,3 +29,9 @@ jobs:
           retention-days: 30
       - name: Build
         run: webpack --mode production
+      - name: Deploy 1
+        uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Deploy 2
+        run: flyctl deploy --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
