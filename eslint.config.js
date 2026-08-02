@@ -1,6 +1,7 @@
 const js = require('@eslint/js')
 const react = require('eslint-plugin-react')
 const jest = require('eslint-plugin-jest')
+const playwright = require('eslint-plugin-playwright')
 const globals = require('globals')
 
 module.exports = [
@@ -75,10 +76,16 @@ module.exports = [
     },
   },
   {
-    files: ['./jest.setup.js', '**/*.jest.spec.jsx'],
+    files: [
+      './jest.setup.js',
+      '**/*.jest.spec.jsx',
+      './tests/*.spec.js',
+      './playwright.config.js',
+    ],
     plugins: {
       react,
       jest,
+      playwright,
     },
     languageOptions: {
       parserOptions: {
