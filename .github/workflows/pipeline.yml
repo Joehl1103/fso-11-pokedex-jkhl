@@ -31,7 +31,9 @@ jobs:
           retention-days: 30
       - name: Build
         run: webpack --mode production
-      - name: Deploy 1
+      - name: Fly.io Deploy 1
         uses: superfly/flyctl-actions/setup-flyctl@master
-      - name: Deploy 2
+      - name: Fly.io Deploy 2
         run: flyctl deploy --config fly.toml --remote-only --strategy canary --wait-timeout 30s
+      - name: Render deploy
+        run: curl ${{ secrets.RENDER_DEPLOY_HOOK }}
