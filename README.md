@@ -49,6 +49,8 @@ Set the `PORT` environment variable to use a different production port.
 
 ## Deployment
 
+### Fly.io (current)
+
 The checked-in `fly.toml` deploys the Express application to Fly.io. It uses
 port 5001 and verifies availability through `GET /health`, which returns
 `200 OK` with the body `ok`.
@@ -64,6 +66,11 @@ fly deploy
 
 The deployment runs with a canary strategy. The app also exposes `GET
 /version`, currently returning `1`.
+
+### Render.com
+
+The application is also deployed on Render.com at
+[fso-11-pokedex-jkhl.onrender.com](https://fso-11-pokedex-jkhl.onrender.com/).
 
 ## Project structure
 
