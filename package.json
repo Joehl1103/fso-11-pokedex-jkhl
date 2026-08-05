@@ -9,7 +9,8 @@
     "test": "jest",
     "test:e2e": "playwright test --project=chromium",
     "eslint": "eslint './**/*.{js,jsx}'",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "verify": "npm run eslint && npm run test && npm run test:e2e"
   },
   "repository": {
     "type": "git",
