@@ -33,14 +33,14 @@ jobs:
           path: playwright-report/
           retention-days: 30
       - name: Build
-        if: ${{ github.event_name == "push" }}
+        if: ${{ github.event_name == 'push' }}
         run: webpack --mode production
       - name: Fly.io Deploy 1
-        if: ${{ github.event_name == "push" }}
+        if: ${{ github.event_name == 'push' }}
         uses: superfly/flyctl-actions/setup-flyctl@master
       - name: Fly.io Deploy 2
-        if: ${{ github.event_name == "push" }}
+        if: ${{ github.event_name == 'push' }}
         run: flyctl deploy --config fly.toml --remote-only --strategy canary --wait-timeout 30s
       - name: Render deploy
-        if: ${{ github.event_name == "push" }}
+        if: ${{ github.event_name == 'push' }}
         run: curl ${{ secrets.RENDER_DEPLOY_HOOK }}
