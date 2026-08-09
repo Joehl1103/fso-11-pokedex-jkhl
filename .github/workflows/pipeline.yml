@@ -40,6 +40,7 @@ jobs:
     env:
       FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
     steps:
+      - uses: actions/checkout@v6
       - name: Fly.io Deploy 1
         uses: superfly/flyctl-actions/setup-flyctl@master
       - name: Fly.io Deploy 2
