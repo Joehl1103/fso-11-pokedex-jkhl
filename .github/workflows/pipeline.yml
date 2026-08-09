@@ -11,8 +11,6 @@ on:
 jobs:
   prep_for_deploy:
     runs-on: ubuntu-latest
-    env:
-      FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -36,24 +34,24 @@ jobs:
         if: ${{ github.event_name == 'push' }}
         run: webpack --mode production
   deploy:
+    if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
     needs: [prep_for_deploy]
+    env:
+      FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
     steps:
       - name: Fly.io Deploy 1
-        if: ${{ github.event_name == 'push' }}
         uses: superfly/flyctl-actions/setup-flyctl@master
       - name: Fly.io Deploy 2
-        if: ${{ github.event_name == 'push' }}
         run: flyctl deploy --config fly.toml --remote-only --strategy canary --wait-timeout 30s
       - name: Render deploy
-        if: ${{ github.event_name == 'push' }}
         run: curl ${{ secrets.RENDER_DEPLOY_HOOK }}
   tag_release:
+    if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
     needs: [deploy]
     steps:
       - name: Bump version and push tag
-        if: ${{ github.event_name == 'push' }}
         uses: anothrNick/github-tag-action@1.75.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
