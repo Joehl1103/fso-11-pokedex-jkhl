@@ -3,11 +3,7 @@ name: Testing stuff
 on:
   push:
     branches:
-<<<<<<< HEAD
-      - main
-=======
       - master
->>>>>>> 39b9f62 (test workflow #skip)
 
 jobs:
   a_test_job:
