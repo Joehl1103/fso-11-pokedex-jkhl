@@ -24,4 +24,4 @@ jobs:
         run: echo "$COMMIT_MESSAGES"
       - name: gate on skip
         if: contains(toJSON(github.event.commits.*.message),'#skip')
-        run: echo "HERE HERE!"
+        run: echo "HERE HERE"
