@@ -32,6 +32,7 @@ jobs:
         with:
           job-name: prep_for_deploy
           status: ${{ job.status }}
+          discord-webhook: ${{ secrets.DISCORD_WEBHOOK }}
 
   e2e:
     runs-on: ubuntu-latest
