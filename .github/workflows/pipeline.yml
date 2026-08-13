@@ -28,7 +28,7 @@ jobs:
         run: webpack --mode production
       - name: Notify
         if: ${{ always() }}
-        uses: ./.github/actions/action.yml
+        uses: ./.github/actions
         with:
           job-name: prep_for_deploy
           status: ${{ job.status }}
