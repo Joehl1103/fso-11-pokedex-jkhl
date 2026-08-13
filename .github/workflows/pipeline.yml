@@ -31,7 +31,7 @@ jobs:
         uses: ./.github/actions/action-notification.yml
         with:
           job-name: prep_for_deploy
-          status: ${{ job.status() }}
+          status: ${{ job.status }}
 
   e2e:
     runs-on: ubuntu-latest
