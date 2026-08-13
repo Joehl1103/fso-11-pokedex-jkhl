@@ -26,6 +26,12 @@ jobs:
       - name: Build
         if: ${{ github.event_name == 'push' }}
         run: webpack --mode production
+      - name: Notify
+        if: always()
+        uses: ./.github/workflows/notification.yml
+        with:
+          job-name: prep_for_deploy
+          status: ${{ job.status() }}
 
   e2e:
     runs-on: ubuntu-latest
@@ -60,8 +66,6 @@ jobs:
         uses: superfly/flyctl-actions/setup-flyctl@master
       - name: Fly.io Deploy 2
         run: flyctl deploy --config fly.toml --remote-only --strategy canary --wait-timeout 30s
-      - name: Render deploy
-        run: curl ${{ secrets.RENDER_DEPLOY_HOOK }}
 
   deploy_render:
     if: ${{ github.event_name == 'push' }}
