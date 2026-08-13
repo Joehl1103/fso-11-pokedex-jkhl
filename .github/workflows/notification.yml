@@ -1,5 +1,14 @@
 name: notifications
 
+inputs:
+  job-name:
+    required: true
+  status:
+    required: true
+
+runs:
+  using: composite
+
 jobs:
   notify:
     runs-on: ubuntu-latest
