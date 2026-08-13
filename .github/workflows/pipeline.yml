@@ -27,7 +27,7 @@ jobs:
         if: ${{ github.event_name == 'push' }}
         run: webpack --mode production
       - name: Notify
-        if: always()
+        if: ${{ always() }}
         uses: ./.github/workflows/notification.yml
         with:
           job-name: prep_for_deploy
