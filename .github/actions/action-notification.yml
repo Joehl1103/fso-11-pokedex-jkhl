@@ -1,5 +1,7 @@
 name: notifications
 
+description: discord notification
+
 inputs:
   job-name:
     required: true
