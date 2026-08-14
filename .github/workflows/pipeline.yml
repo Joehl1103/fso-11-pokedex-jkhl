@@ -99,7 +99,7 @@ jobs:
         if: ${{ always() }}
         uses: ./.github/actions
         with:
-          job-name: deploy_render
+          job-name: deploy_fly
           status: ${{ needs.deploy_fly.outputs.job-status }}
           discord-webhook: ${{ secrets.DISCORD_WEBHOOK }}
 
