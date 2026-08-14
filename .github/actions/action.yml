@@ -14,42 +14,25 @@ runs:
   using: 'composite'
   steps:
     - uses: actions/checkout@v6
-    - if: ${{ inputs.job-name == 'prep_for_deploy' || inputs.job-name == 'e2e' }}
-      uses: sarisia/actions-status-discord@v1
-      with:
-        webhook: ${{ inputs.discord-webhook }}
-        content: |
-          Hey <@948036101346586636>.
-          Job name: ${{ inputs.job-name }}
-          Job status: ${{ inputs.status }}
-        title: 'status'
-        description: 'notifies of status'
-        color: 0x0000ff
-        url: 'https://github.com/sarisia/actions-status-discord'
-        username: GitHub Actions
     - if: ${{ (inputs.job-name == 'deploy_fly' || inputs.job-name == 'deploy_render') && inputs.status == 'success' }}
       uses: sarisia/actions-status-discord@v1
       with:
         webhook: ${{ inputs.discord-webhook }}
+        status: ${{ inputs.status }}
         content: |
-          Hey <@948036101346586636>.
-          Job name: ${{ inputs.job-name }}
-          Job status: ${{ inputs.status }}
-        title: 'status'
+          ✅ **Build suceeded!** for ${{inputs.jobs-name}}!
         description: 'notifies of status'
-        color: 0x0000ff
+        color: 0x00FF2F
         url: 'https://github.com/sarisia/actions-status-discord'
         username: GitHub Actions
     - if: ${{ (inputs.job-name == 'deploy_fly' || inputs.job-name == 'deploy_render') && inputs.status == 'failure' }}
       uses: sarisia/actions-status-discord@v1
       with:
         webhook: ${{ inputs.discord-webhook }}
+        status: ${{ inputs.status }}
         content: |
-          Hey <@948036101346586636>.
-          Job name: ${{ inputs.job-name }}
-          Job status: ${{ inputs.status }}
-        title: 'status'
-        description: 'notifies of status'
-        color: 0x0000ff
+          ❌ **Build failed!** The ${{inputs.jobs-name}} pipeline encountered an error
+        title: 'Failure details'
+        color: 0xFF2A00
         url: 'https://github.com/sarisia/actions-status-discord'
         username: GitHub Actions
