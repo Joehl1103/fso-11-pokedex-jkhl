@@ -20,7 +20,7 @@ runs:
         webhook: ${{ inputs.discord-webhook }}
         status: ${{ inputs.status }}
         content: |
-          ✅ **Build suceeded!** for ${{inputs.jobs-name}}!
+          ✅ **Build suceeded!** for ${{inputs.job-name}}!
         description: 'notifies of status'
         color: 0x00FF2F
         url: 'https://github.com/sarisia/actions-status-discord'
@@ -31,7 +31,7 @@ runs:
         webhook: ${{ inputs.discord-webhook }}
         status: ${{ inputs.status }}
         content: |
-          ❌ **Build failed!** The ${{inputs.jobs-name}} pipeline encountered an error
+          ❌ **Build failed!** The ${{inputs.job-name}} pipeline encountered an error
         title: 'Failure details'
         color: 0xFF2A00
         url: 'https://github.com/sarisia/actions-status-discord'
